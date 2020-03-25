@@ -53,9 +53,6 @@ class Frekwencja extends Discord.Client {
 
     _onReady() {
         console.log(`(re)Logged in as ${this.user.tag}`);
-        if(this.db.System.presence) {
-            this.user.setPresence({game: {name: this.db.System.presence.name, type: this.db.System.presence.type}});
-        }
     }
 
     async _onMessage(msg) {
