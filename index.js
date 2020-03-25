@@ -57,7 +57,8 @@ class Frekwencja extends Discord.Client {
     async _onMessage(msg) {
         let prefix = this.prefix;
         msg.prefix = prefix;
-
+        let args = this.getArgs(msg.content, prefix);
+        
         try {
             if(this.commands.has(args[0])) {
                 let cmd = this.commands.get(args[0]);
