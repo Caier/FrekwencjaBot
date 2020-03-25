@@ -38,7 +38,6 @@ class Frekwencja extends Discord.Client {
 
     _start() {
         this.login(this.vars.TOKEN);
-        this.once("ready", () => this.setInterval(() => this._loops(), 30000));
         this.on("ready", () => this._onReady());
         this.on("message", msg => this._onMessage(msg));
         this.on("disconnect", () => this._reconnect());
