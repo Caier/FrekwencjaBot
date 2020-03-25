@@ -12,7 +12,7 @@ module.exports = {
         const defTime = bot.parseTimeStrToMilis('45m');
         const presMsg = new bot.RichEmbed().setTitle(`Sprawdzanie obecności ${temat ? '('+temat+')' : ''}`).setColor(color)
                         .setDescription(`Aby zaznaczyć swoją obecność kliknij reakcję ${reaction} pod tą wiadomością`)
-                        .setFooter(`Wygasa: ${new Date(Date.now() + defTime).toLocaleTimeString([], {timeZone: 'Europe/Warsaw', hour: '2-digit', minute:'2-digit'})}`);
+                        .setFooter(`Wygasa: ${new Date(Date.now() + defTime).toLocaleTimeString([], {timeZone: 'Europe/Warsaw', hour: '2-digit', minute:'2-digit', hour12: false})}`);
         
         if(defTime == -1) {
             msg.channel.send(bot.embgen(color, 'Podano niewłaściwy czas sprawdzania frekwencji'));
