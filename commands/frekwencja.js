@@ -15,7 +15,7 @@ module.exports = {
                         .setFooter(`Wygasa: ${new Date(Date.now() + defTime).toLocaleTimeString([], {timeZone: 'Europe/Warsaw', hour: '2-digit', minute:'2-digit', hour12: false})}`);
 
         let frekRole = msg.guild.roles.find(v => v.name == 'frekwencja') || [];
-        if(frekRole.members.array.length == 0) {
+        if(!msg.guild.members.array().some(m => m.roles.has(frekRole.id))) {
             msg.channel.send(bot.embgen(bot.sysColor, '**Aby bot działał poprawnie należy dać rolę `frekwencja` wszystkim osobom, których frekwencja ma być sprawdzana.**'));
             return;
         }
