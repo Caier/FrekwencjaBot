@@ -12,5 +12,9 @@
     "start": "node index.js"
   },
   "author": "caier",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "npm": "*",
+    "node": "12.x"
+  }
 }

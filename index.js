@@ -43,6 +43,7 @@ class Frekwencja extends Discord.Client {
         this.on("disconnect", () => this._reconnect());
         this.on("error", err => console.error("Websocket error: " + err.message));
         this.on("reconnecting", () => console.log("Reconnecting to Discord..."));
+        this.on("guildCreate", guild => this._onNewGuild(guild))
     }
 
     _reconnect() {
@@ -97,7 +98,12 @@ class Frekwencja extends Discord.Client {
         return args;
     }
 
-    embgen(color = Math.floor(Math.random() * 16777215), content) {
+    _onNewGuild(guild) {
+        !guild.roles.find(v => v.name == 'frekwencja') && guild.createRole({name: 'frekwencja', mentionable: true});
+        guild.systemChannel.send(this.embgen(this.sysColor, '**Aby bot działał poprawnie należy dać rolę `frekwencja` wszystkim osobom, których frekwencja ma być sprawdzana.**'));
+    }
+
+    embgen(color = Math.floor(Math.random() * 0xFFFFFF), content) {
         return new Discord.RichEmbed().setColor(color).setDescription(content);
     }
 

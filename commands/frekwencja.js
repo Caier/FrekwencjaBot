@@ -13,11 +13,6 @@ module.exports = {
         const presMsg = new bot.RichEmbed().setTitle(`Sprawdzanie obecności ${temat ? '('+temat+')' : ''}`).setColor(color)
                         .setDescription(`Aby zaznaczyć swoją obecność kliknij reakcję ${reaction} pod tą wiadomością`)
                         .setFooter(`Wygasa: ${new Date(Date.now() + defTime).toLocaleTimeString([], {timeZone: 'Europe/Warsaw', hour: '2-digit', minute:'2-digit', hour12: false})}`);
-        
-        if(defTime == -1) {
-            msg.channel.send(bot.embgen(color, 'Podano niewłaściwy czas sprawdzania frekwencji'));
-            return;
-        }
 
         let frekRole = msg.guild.roles.find(v => v.name == 'frekwencja') || [];
         let checkMsg = await msg.channel.send(frekRole.id ? `<@&${frekRole.id}>` : '', {embed: presMsg});
